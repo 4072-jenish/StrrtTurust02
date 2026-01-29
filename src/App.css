@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Public+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Public Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: #FAFAF9;
+  color: #1C1917;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1;
+}
+
+.App {
+  position: relative;
+  z-index: 2;
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Archivo Black', sans-serif;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.mono-text {
+  font-family: 'Space Mono', monospace;
+}
+
+.hard-shadow {
+  box-shadow: 4px 4px 0px 0px #0F172A;
+}
+
+.hard-shadow:hover {
+  box-shadow: 2px 2px 0px 0px #0F172A;
+  transform: translate(2px, 2px);
+}
+
+.hard-shadow:active {
+  box-shadow: 0px 0px 0px 0px #0F172A;
+  transform: translate(4px, 4px);
+}
+
+.btn-primary {
+  background: #0F172A;
+  color: white;
+  border: none;
+  padding: 12px 32px;
+  border-radius: 9999px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease-out;
+}
+
+.btn-primary:hover {
+  transform: scale(1.05);
+}
+
+.btn-primary:active {
+  transform: scale(0.95);
+}
+
+.btn-secondary {
+  background: white;
+  color: #0F172A;
+  border: 2px solid #0F172A;
+  padding: 12px 32px;
+  border-radius: 9999px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease-out;
+}
+
+.btn-secondary:hover {
+  background: #f8f8f8;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 16px;
+  }
+}

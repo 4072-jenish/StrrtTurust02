@@ -3,8 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Store, MapPin, Phone, FileText } from 'lucide-react';
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
+// Fallback to local backend during development when env var is not set
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8001';
+const API = `${BACKEND_URL}/api`; 
 
 const VendorRegistration = () => {
   const navigate = useNavigate();
@@ -38,10 +39,17 @@ const VendorRegistration = () => {
       });
 
       alert('Vendor registered successfully!');
-      navigate(`/vendor/${response.data.id}`);
+      const id = response.data?.id;
+      if (id) {
+        navigate(`/vendor/${id}`);
+      } else {
+        console.warn('Registration response missing id:', response.data);
+        alert('Vendor registered but could not redirect (missing id). Please check the vendor list.');
+      }
     } catch (error) {
       console.error('Error registering vendor:', error);
-      alert('Failed to register vendor. Please try again.');
+      const message = error.response?.data?.error || error.message || 'Failed to register vendor. Please try again.';
+      alert(message);
     } finally {
       setSubmitting(false);
     }

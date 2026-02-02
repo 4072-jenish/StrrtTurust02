@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import { Search, TrendingUp, Users, Shield } from 'lucide-react';
 import axios from 'axios';
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+// Fallback to local backend during development when env var is not set
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8001';
 const API = `${BACKEND_URL}/api`;
 
 const Home = () => {
